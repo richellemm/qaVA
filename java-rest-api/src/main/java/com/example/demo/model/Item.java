@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank; // Importar a anotação
 
 public class Item {
     private Long id;
+    private Integer quantity;
 
     @NotBlank(message = "Name is mandatory") // Não pode ser nulo ou conter apenas espaços em branco
     private String name;
@@ -44,4 +45,8 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
+
+// E os getters e setters...
+public Integer getQuantity() { return quantity; }
+public void setQuantity(Integer quantity) { this.quantity = quantity; }
 }

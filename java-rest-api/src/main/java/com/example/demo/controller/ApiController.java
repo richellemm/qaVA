@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.InvalidItemDataException;
 import com.example.demo.model.Item;
 import com.example.demo.service.ItemService; // Importar
 import org.springframework.beans.factory.annotation.Autowired; // Importar
@@ -38,7 +39,6 @@ public class ApiController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // NOVOS
     @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable Long id, @Valid @RequestBody Item item) {
         return itemService.updateItem(id, item)
@@ -54,4 +54,34 @@ public class ApiController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // ENDPOINTS ADICIONAIS COM REGRAS DE NEGÓCIO - QA - VA 1 
+    // NOVO ENDPOINT 1: Gerenciar Estoque
+// Rota final: PATCH /api/items/{id}/stock
+    @PatchMapping("/{id}/stock")
+    public ResponseEntity<Item> updateStock(@PathVariable Long id, @RequestBody Integer quantity) {
+    // REGRA DE NEGÓCIO: Se a quantidade for negativa, lança erro
+    if (quantity < 0) {
+        throw new InvalidItemDataException("Estoque não pode ser negativo");
+    }
+    
+    return itemService.getItemById(id)
+            .map(item -> {
+                item.setQuantity(quantity);
+                return ResponseEntity.ok(item);
+            })
+            .orElse(ResponseEntity.notFound().build());
 }
+
+// NOVO ENDPOINT 2: Validar Nome do Item
+// Rota final: POST /api/items/validate
+    @PostMapping("/validate")
+    public ResponseEntity<String> validateItemName(@RequestBody String name) {
+    // REGRA DE NEGÓCIO: Nome não pode ser nulo ou vazio
+    if (name == null || name.trim().isEmpty()) {
+        throw new InvalidItemDataException("Nome inválido!");
+    }
+    return ResponseEntity.ok("Nome válido");
+}
+}
+

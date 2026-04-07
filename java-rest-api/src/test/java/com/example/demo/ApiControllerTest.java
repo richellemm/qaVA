@@ -193,4 +193,51 @@ public void givenItemsExist_whenGetAllItems_thenReturns200AndItemList() throws E
         mockMvc.perform(delete("/api/items/1"))
                 .andExpect(status().isNoContent()); // Verifica pelo status 204
     }
+
+    // NOVOS TESTES
+
+    @Test
+    public void whenUpdateStock_withValidQuantity_thenReturns200() throws Exception {
+    // Given
+    Item item = new Item(1L, "Item Teste", "Desc");
+    when(itemService.getItemById(1L)).thenReturn(Optional.of(item));
+
+    // When & Then
+    mockMvc.perform(patch("/api/items/1/stock")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content("10")) // Enviando um número inteiro
+            .andExpect(status().isOk());
+}
+
+    @Test
+    public void whenUpdateStock_withNegativeQuantity_thenReturns400() throws Exception {
+    // When & Then
+    mockMvc.perform(patch("/api/items/1/stock")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content("-5"))
+            .andExpect(status().isBadRequest()); // Espera erro 400 devido à nossa exceção
+}
+
+    @Test
+    public void whenValidateItemName_withValidName_thenReturns200() throws Exception {
+    // Cenário: Enviando um nome preenchido corretamente
+    String validName = "Item Teste";
+
+    mockMvc.perform(post("/api/items/validate")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(validName)) // Enviando a String direto
+            .andExpect(status().isOk())
+            .andExpect(content().string("Nome válido"));
+}
+
+@Test
+    public void whenValidateItemName_withEmptyName_thenReturns400() throws Exception {
+        // Cenário: String vazia (que aciona o .trim().isEmpty())
+        String emptyName = "   "; 
+
+        mockMvc.perform(post("/api/items/validate")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(emptyName))
+                .andExpect(status().isBadRequest());
+    }
 }
