@@ -55,10 +55,10 @@ Para fins de avaliação de **Qualidade de Software**, foi gerado o relatório d
 ### Evidência de Cobertura:
 > Ferramenta da IDE
 
-![Test Coverage 1](D:\OneDrive\Documentos\UNIESP\SISTEMAS PARA INTERNET\P5B\Qualidade de Software\qaVA\java-rest-api\imagens\testCoverage-endpoints.png)
+![Test Coverage 1](./java-rest-api/imagens/testCoverage-endpoints.png)
 
-![Test Coverage 2](D:\OneDrive\Documentos\UNIESP\SISTEMAS PARA INTERNET\P5B\Qualidade de Software\qaVA\java-rest-api\imagens\testCoverage-endpoints.png)
+![Test Coverage 2](./java-rest-api/imagens/testCoverage-invalidDataException.png)
 
 
-![Test Coverage 3](D:\OneDrive\Documentos\UNIESP\SISTEMAS PARA INTERNET\P5B\Qualidade de Software\qaVA\java-rest-api\imagens\testCoverage-endpoints.png)
+![Test Coverage 3](./java-rest-api/imagens/testCoverage-novosTestes.png)
 
