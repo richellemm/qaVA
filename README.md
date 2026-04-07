@@ -45,19 +45,20 @@ A cobertura de testes foi implementada utilizando **JUnit 5**, **Mockito** e **M
 * Maven instalado (ou extensão Maven no VS Code).
 
 ### Executar Testes e Gerar Relatório de Cobertura
-Para rodar todos os testes, utilize o Testing da sua IDE;
 
-## 📊 Relatório de Cobertura (JaCoCo)
+Para rodar todos os testes, utilize o Testing da sua IDE
+
+## 📊 Relatório de Cobertura
 
 Para fins de avaliação de **Qualidade de Software**, foi gerado o relatório de cobertura de código. O print abaixo demonstra que os novos endpoints e suas respectivas regras de exceção foram 100% cobertos pelos testes unitários.
 
 ### Evidência de Cobertura:
 > Ferramenta da IDE
 
-![Test Coverage 1](java-rest-api\imagens\testCoverage-endpoints.png)
+![Test Coverage 1](D:\OneDrive\Documentos\UNIESP\SISTEMAS PARA INTERNET\P5B\Qualidade de Software\qaVA\java-rest-api\imagens\testCoverage-endpoints.png)
 
-![Test Coverage 2](java-rest-api\imagens\testCoverage-invalidDataException.png)
+![Test Coverage 2](D:\OneDrive\Documentos\UNIESP\SISTEMAS PARA INTERNET\P5B\Qualidade de Software\qaVA\java-rest-api\imagens\testCoverage-endpoints.png)
 
 
-![Test Coverage 3](java-rest-api\imagens\testCoverage-novosTestes.png)
+![Test Coverage 3](D:\OneDrive\Documentos\UNIESP\SISTEMAS PARA INTERNET\P5B\Qualidade de Software\qaVA\java-rest-api\imagens\testCoverage-endpoints.png)
 
